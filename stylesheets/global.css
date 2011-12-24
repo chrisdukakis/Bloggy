@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url('http://themes.googleusercontent.com/static/fonts/opensans/v4/xozscpT2726on7jbcb_pAj8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+}
+@font-face{
+	font-family: 'helvetica neue bold';
+	src: url('fonts/HelveticaNeueLTPro-Bd.otf');
+}
+@font-face{
+	font-family: 'helvetica neue';
+	src: url('fonts/HelveticaNeueLTPro-Roman.otf');
+}
+#expand_header {
+	position:fixed;
+	top:0px;
+	width:100%;
+	height:0px;
+	border-top:7px solid rgba(0,0,0,0.9);
+}
+#header{
+	display:none;
+	margin:0px;
+	width:100%;
+	position:fixed;
+	top:7px;
+	float:left;
+	height:50px;
+	border-bottom:1px solid rgba(0,0,0,0.05);
+	padding:0px 0px 0px 0px;
+	background:rgba(0,0,0,0.9);
+}
+#header-container{
+	width:950px;
+	margin:auto;
+}
+#header h1 {
+	margin:5px 0px 0px 0px;
+	padding:0px;
+	width:200px;
+	float:left;
+	font-family:helvetica neue bold;
+	font-size:28px;
+	font-weight:bold;
+	letter-spacing:-1px;
+	color:rgba(255, 255, 255, 0.9);
+}
+#header nav{
+	float:right;	
+	margin-top:6px;
+}
+#header nav a{
+	font-family:Open Sans;
+	float:left;
+	color:rgba(255,255,255,0.9);
+	padding:6px 8px 6px 8px;
+	font-size:15px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1);	
+	-webkit-transition:color 0.9s ease-out;	
+	-moz-transition:color 0.9s ease-out;	
+}
+#header nav a:hover{	
+}
+/*
+#header nav a:hover{
+	border-radius:3px;
+	background:rgba(0,0,0,0.9);
+	-webkit-transition:background 0.2s ease-in;
+	-moz-transition:background 0.2s ease-in;
+}
+*/
+
