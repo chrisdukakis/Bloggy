@@ -2,11 +2,16 @@
 class AccountController extends account {
 	
 	public function create() {
-		if( !empty( $this->full_name ) && !empty( $this->username ) && !empty( $this->password ) && !empty( $this->password_2 ) && !empty( $this->blog_title ) ) {
+		if( !empty( $this->full_name ) && 
+		    !empty( $this->username ) && 
+		    !empty( $this->password ) && 
+		    !empty( $this->password_2 ) && 
+		    !empty( $this->blog_title ) ) {
 			if ( $this->password !== $this->password_2 ) {
 				throw new Exception( password_mismatch );
 			}
-			$account = database::select( 'accounts', 'id', array( 'username' => $this->username ), null, null, null );			
+			$account = database::select( 'accounts', 'id', array( 'username' => $this->username ), 
+							null, null, null );			
 			if ( !isset( $account['0']['id'] ) ) {
 				return parent::create();
 			}	

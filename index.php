@@ -42,12 +42,7 @@ if ( isset( $_GET['view'] ) ) {
 		foreach ( $input as $key => $value ) {
 			$object->$key = $value;
 		}
-		try {
-			$object->view();
-		}	
-		catch ( Exception $error ) {
-			alert( $error );
-		}
+		$object->view();
 	}
 	else {
 		header( 'Location: index.php' );

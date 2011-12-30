@@ -6,9 +6,6 @@ mysql_select_db( $settings['database']['name'] );
 class database {
 
 	public static function select( $table, $cols, $where, $offset, $limit, $or ) {
-		if( !isset( $cols ) ) {
-			$cols = '*';
-		}
 		foreach ( $where as $target_col => $value ) {
 			if ( isset( $value ) ) {
 				$value = self::escape( $value );
@@ -16,7 +13,7 @@ class database {
 			}	
 		}
 		if ( isset( $sets ) ) {
-			$where = implode( 'AND ', $sets );
+			$where = implode( ' AND ', $sets );
 			$where = ' WHERE '.$where;	
 		}
 		else		
@@ -28,25 +25,25 @@ class database {
 			$where = $where.' AND id < '.$offset;
 		}	
 		if ( $table == 'contacts' ) {
-			$order = 'ORDER by u1, u2';
+			$order = ' ORDER by u1, u2 ';
 		}
 		else
-			$order = 'ORDER by id DESC';
+			$order = ' ORDER by id DESC ';
 		if( !isset( $limit ) ) {
-				$limit = null;
-			}
+			$limit = null;
+		}
 		else 
-				$limit = 'LIMIT '.$limit;
+			$limit = ' LIMIT '.$limit;
 		$query = mysql_query( "SELECT $cols FROM $table $where $order $limit" );
 		if ( $query ) {
 			while ( $row = mysql_fetch_array( $query ) ) {
 				$data[] = $row;
 			}
-			if( isset( $data ) ) {
+			if ( isset( $data ) ) {
 				return $data;
 			}
 			else
-				return;
+				return false;
 		}
 		else 
 			return false;
@@ -84,7 +81,7 @@ class database {
 		return mysql_query( "UPDATE $table SET $input WHERE $target = '$target_value'" );
  	}
 	
-	public static function escape( $string ) {
+	protected static function escape( $string ) {
 		return mysql_real_escape_string( $string );
 	}
 	
