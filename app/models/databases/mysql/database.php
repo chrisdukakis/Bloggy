@@ -80,7 +80,8 @@ class database {
 				$sets[] = "$col = '$value'";
 			}	
 		}
-		$input = implode( ', ' ,$sets );		
+		$input = implode( ', ' ,$sets );
+		$target_value = self::escape( $target_value );
 		return mysql_query( "UPDATE $table SET $input WHERE $target = '$target_value'" );
  	}
 	
