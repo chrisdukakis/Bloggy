@@ -8,7 +8,8 @@ class database {
 	public static function select( $table, $cols, $where, $offset, $limit, $or ) {
 		foreach ( $where as $target_col => $value ) {
 			if ( isset( $value ) ) {
-				$value = self::escape( $value );
+				$col = self::escape( $col );
+				$value = self::escape( $value );				
 				$sets[] = "$target_col = '$value'";
 			}	
 		}
@@ -57,6 +58,7 @@ class database {
 				}
 				$value = htmlspecialchars( $value );
 				$value = nl2br( $value, false );
+				$col = self::escape( $col );				
 				$value = self::escape( $value );
 				$sets[] = "$col = '$value'";
 			}	
@@ -73,6 +75,7 @@ class database {
 				}			
 				$value = htmlspecialchars( $value );
 				$value = nl2br( $value, false );
+				$col = self::escape( $col );				
 				$value = self::escape( $value );
 				$sets[] = "$col = '$value'";
 			}	
